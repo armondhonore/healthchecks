@@ -1,0 +1,21 @@
+application:
+  name: healthchecks
+  pods:
+  - name: app
+    image: healthchecks/healthchecks:latest
+    path: /
+    servicePorts:
+    - 8000
+    vars:
+      SECRET_KEY: "a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6"
+      SITE_ROOT: "https://relaxed-weasel-healthchecks.cloud.nexlayer.ai"
+      SITE_NAME: "Nexlayer Healthchecks"
+      REGISTRATION_OPEN: "True"
+      DB: sqlite
+      DB_NAME: "/data/hc.db"
+      EMAIL_HOST: ""
+      SUPERUSER_EMAIL: "armond@nexlayer.com"
+    volumes:
+    - name: healthchecks-data
+      mountPath: /data
+      size: 5Gi
